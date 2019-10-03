@@ -1,4 +1,10 @@
-% This file does blah blah blah
+% This script generally shows the usage of all the matlab functions we'll
+% .. need for this project and is my best start on building the gaussian  
+% .. and LoG pyramids.
+%
+% Input:  the cameraman image
+% Output: graphs of image, image * gaussian, laplacian of gaussian (DoG)
+% 
 % I use the p0, p1, p2 notation used in the Crowley paper & proj. desc.
 %    where: p0 = the image
 %           p1 = p0 * G
@@ -40,7 +46,8 @@ p1 = imfilter(p0, g_sig1 * g_sig1_coef, 'same', 'replicate');
 p2 = imfilter(p1, g_sig1 * g_sig1_coef, 'same', 'replicate');
 
 % start of the LoG pyramid --
-% take difference between gaussian images
+% approximating LoG with difference of gaussian (DoG)
+% --> allowed to do this from reasoning in Crowley paper
 log_1 = p1 - p0;
 log_2 = p2 - p1;
 
